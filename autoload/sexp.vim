@@ -2174,17 +2174,10 @@ function! sexp#opening_insertion(bra)
     let buftail = ''
     let ket = s:pairs[a:bra]
 
-    if prev =~# '\v\S'
-        \ && prev !~# s:opening_bracket
-        \ && !s:is_macro_char(prev)
-        let buf .= ' '
-    endif
-
     let buf .= a:bra . ket
     let buftail .= "\<C-G>U\<Left>"
 
     if cur =~# '\v\S' && cur !~# s:closing_bracket
-        let buf .= ' '
         let buftail .= "\<C-G>U\<Left>"
     endif
 
